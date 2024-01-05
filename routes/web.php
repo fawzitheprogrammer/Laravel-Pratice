@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CustomController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserCred;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/show-user', function () {
-    return view('show-user-info',["username"=>'Fawzi Gharib',"password"=>"1234"]);
-});
-Route::get('/product-list', function () {
-  
-    $products = [
-        [ 'username' => 'John Doe', 'profession' => 'Software Engineer'],
-        [ 'username' => 'Jane Smith', 'profession' => 'Graphic Designer'],
-        [ 'username' => 'Alex Johnson', 'profession' => 'Data Analyst'],
-        [ 'username' => 'Emily Davis', 'profession' => 'Marketing Manager'],
-        [ 'username' => 'Michael Brown', 'profession' => 'Project Coordinator']
-    ];
-
-    return view('product-list',["products"=>$products]);
-});
+Route::get('/show-user', [UserCred::class,'showUserCred'] );
+Route::get('/product-list', [ProductController::class,'productList'] );
+Route::get('/user/{username}/{profession}',[CustomController::class,'getShopper']);
