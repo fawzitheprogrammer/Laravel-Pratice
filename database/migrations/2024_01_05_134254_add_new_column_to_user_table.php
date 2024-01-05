@@ -11,12 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_with_pro', function (Blueprint $table) {
-            $table->id();
-            $table->string('username');
-            $table->string('profession');
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamps();
+        Schema::table('users_with_pro', function (Blueprint $table) {
             $table->string('profile_pic');
         });
     }
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('user_and_pro', function (Blueprint $table) {
+            //
+        });
     }
 };

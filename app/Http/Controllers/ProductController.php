@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserWithPro;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function productList () {
   
-        $products = [
-            [ 'username' => 'John Doe', 'profession' => 'Software Engineer'],
-            [ 'username' => 'Jane Smith', 'profession' => 'Graphic Designer'],
-            [ 'username' => 'Alex Johnson', 'profession' => 'Data Analyst'],
-            [ 'username' => 'Emily Davis', 'profession' => 'Marketing Manager'],
-            [ 'username' => 'Michael Brown', 'profession' => 'Project Coordinator']
-        ];
+        $products = UserWithPro::orderBy('created_at','DESC')->get();
     
         return view('product-list',["products"=>$products]);
     }
+
+
+  public  function userProfile($id){
+ 
+    $products = UserWithPro::where('id',$id)->get();
+
+    return view('user.profile',['products'=>$products]);
+
+   }
 }
