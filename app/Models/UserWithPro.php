@@ -11,4 +11,5 @@ class UserWithPro extends Model
 
 
     protected $table = 'users_with_pro';
+    public $timeStamp= false;
 }
