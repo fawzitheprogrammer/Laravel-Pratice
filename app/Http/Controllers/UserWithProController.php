@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use request;
+
 use App\Models\UserWithPro;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\Request;
 
 class UserWithProController extends Controller
 {
   public function userList()
   {
+    $rand = rand().rand();
+    //$guest = Cookie::has('guest')? Cookie::get('guest') : Cookie::queue("guest",$rand,4555);
 
     $products = UserWithPro::orderBy('created_at', 'DESC')->get();
-
     return view('user-list', ["products" => $products]);
+    
   }
 
 
@@ -29,10 +33,17 @@ class UserWithProController extends Controller
   public function save()
   {
 
-    $UserWithPro = new UserWithPro;
-    $UserWithPro->username = \request('username');
-    $UserWithPro->profession = \request('profession');
-    $UserWithPro->save();
+
+
+    if(request()->validate(['username' => 'required','profession' => 'required','skills' => 'required'])){
+      $UserWithPro = new UserWithPro;
+      $UserWithPro->username = \request('username');
+      $UserWithPro->profession = \request('profession');
+      $UserWithPro->skills = \request('skills');
+      $UserWithPro->save();
+    }
+   
+  
 
     return redirect('/user-list')->with('success','User added successfully');
 
