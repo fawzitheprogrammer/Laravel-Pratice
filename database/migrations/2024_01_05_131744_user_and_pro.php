@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('profession');
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
-            $table->string('profile_pic');
+            $table->string('profile_pic')->default('https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg');
+            $table -> json('skills')->nullable();
+
         });
     }
 
