@@ -45,7 +45,7 @@ class UserWithProController extends Controller
    
   
 
-    return redirect('/user-list')->with('success','User added successfully');
+    return redirect('/')->with('success','User added successfully');
 
 
   }
@@ -54,7 +54,7 @@ class UserWithProController extends Controller
     $UserWithPro = UserWithPro::findOrFail($id);
     $UserWithPro->delete();
 
-    return redirect('/user-list')->with('failure','User deleted');
+    return redirect('/')->with('failure','User deleted');
   }
 
 
