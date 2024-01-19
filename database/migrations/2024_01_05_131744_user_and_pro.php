@@ -19,7 +19,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('profile_pic')->default('https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg');
             $table -> json('skills')->nullable();
-
         });
     }
 

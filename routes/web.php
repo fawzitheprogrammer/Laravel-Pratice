@@ -18,11 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserWithProController::class,'userList']);
 Route::get('/show-user', [UserCred::class,'showUserCred'] );
-Route::get('/user-list', [UserWithProController::class,'userList'] );
 Route::post('/save', [UserWithProController::class,'save'] );
 Route::get('/delete/{id}', [UserWithProController::class,'delete'] );
 Route::get('/user/{id}',[CustomController::class,'getShopper']);
