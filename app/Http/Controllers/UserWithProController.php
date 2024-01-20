@@ -15,27 +15,12 @@ class UserWithProController extends Controller
     $rand = rand().rand();
     //$guest = Cookie::has('guest')? Cookie::get('guest') : Cookie::queue("guest",$rand,4555);
 
-    $checkboxValues = [
-      "Vue",
-      "React",
-      "Angular",
-      "Laravel",
-      "Python",
-      "Django",
-      "Node.js",
-      "Flutter",
-      "Dart",
-      "Github",
-      "Git",
-      "Tailwind CSS",
-      "Express JS"
-  ];
   
   // You can then use this array for various purposes, like iterating over it, checking if certain values are present, etc.
   
 
     $users = UserWithPro::orderBy('created_at', 'DESC')->get();
-    return view('user-list', ["products" => $users, "listOfSkill"=>$checkboxValues]);
+    return view('user-list', ["users" => $users]);
     
   }
 
@@ -43,9 +28,12 @@ class UserWithProController extends Controller
   public function userProfile($id)
   {
 
-    $products = UserWithPro::where('id', $id)->get();
+    $users = UserWithPro::where('id', $id)->get();
 
-    return view('user.profile', ['products' => $products]);
+    
+   
+
+    return view('user.profile', ['users' => $users  ]);
 
   }
 
@@ -87,6 +75,24 @@ class UserWithProController extends Controller
 
 
   public function register(){
-    return view('register-user.registeration');
+
+    
+    $checkboxValues = [
+      "Vue",
+      "React",
+      "Angular",
+      "Laravel",
+      "Python",
+      "Django",
+      "Node.js",
+      "Flutter",
+      "Dart",
+      "Github",
+      "Git",
+      "Tailwind CSS",
+      "Express JS"
+  ];
+
+    return view('register-user.registeration',["listOfSkill"=>$checkboxValues]);
 }
 }

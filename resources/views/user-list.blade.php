@@ -17,7 +17,7 @@
 <div class="mx-auto w-full  m-5 max-w-sm text-center">
     <a href="/register" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New User</a>
 </div>
-@foreach ($products as $user )
+@foreach ($users as $user )
 <div class="mx-auto w-full  m-5 max-w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div class="flex flex-col items-center pb-10 m-10 object-cover">
         <img class="w-24 h-24 object-cover object-center mb-3 rounded-full shadow-lg" src="{{$user['profile_pic']}}" alt="Bonnie image"/>
