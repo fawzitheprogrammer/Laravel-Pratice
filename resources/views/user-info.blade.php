@@ -1,1 +1,0 @@
-This is {{$username}} who is a {{$profession}}
