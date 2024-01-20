@@ -15,8 +15,8 @@ class UserWithProController extends Controller
     $rand = rand().rand();
     //$guest = Cookie::has('guest')? Cookie::get('guest') : Cookie::queue("guest",$rand,4555);
 
-    $products = UserWithPro::orderBy('created_at', 'DESC')->get();
-    return view('user-list', ["products" => $products]);
+    $users = UserWithPro::orderBy('created_at', 'DESC')->get();
+    return view('user-list', ["products" => $users]);
     
   }
 
